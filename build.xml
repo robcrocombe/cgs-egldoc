@@ -1,9 +1,9 @@
 <project name="pacs-egldoc" default="main">
 	<description>An EMF-to-HTML generator</description>
 	<!-- #file -->
-	<property name="model" value="" description="The EMF model file path"/>
+	<property name="modelPath" value="" description="The EMF model file path"/>
 	<!-- #string -->
-	<property name="model" value="" description="The EMF model file path"/>
+	<property name="metaModelName" value="" description="The name of metamodel"/>
 	
 	<target name="loadModels">
 		<epsilon.emf.loadModel name="M" modelfile="${model}"
@@ -14,7 +14,7 @@
 		<epsilon.egl src="egl/Emf2Html.egl" outputroot="${outputRoot}">
 			<model ref="M"/>
 			<parameter name="outputDir" value="${outputRoot}"/>
-			<parameter name="metaModelName" value="Library"/>
+			<parameter name="metaModelName" value="${metaModelName}"/>
 		</epsilon.egl>
 		<copy todir="${outputRoot}">
 			<fileset dir="egl/common"/>
