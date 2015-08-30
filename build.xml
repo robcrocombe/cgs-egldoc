@@ -1,0 +1,23 @@
+<project name="pacs-egldoc" default="main">
+	<description>An EMF-to-HTML generator</description>
+	<!-- #file -->
+	<property name="model" value="" description="The EMF model file path"/>
+	<!-- #string -->
+	<property name="model" value="" description="The EMF model file path"/>
+	
+	<target name="loadModels">
+		<epsilon.emf.loadModel name="M" modelfile="${model}"
+			metamodeluri="http://www.eclipse.org/emf/2002/Ecore" read="true" store="false"/>
+	</target>
+	
+	<target name="main" depends="loadModels">
+		<epsilon.egl src="egl/Emf2Html.egl" outputroot="${outputRoot}">
+			<model ref="M"/>
+			<parameter name="outputDir" value="${outputRoot}"/>
+			<parameter name="metaModelName" value="Library"/>
+		</epsilon.egl>
+		<copy todir="${outputRoot}">
+			<fileset dir="egl/common"/>
+		</copy>
+	</target>
+</project>
