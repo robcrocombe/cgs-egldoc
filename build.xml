@@ -6,7 +6,7 @@
 	<property name="metaModelName" value="" description="The name of metamodel"/>
 	
 	<target name="main">
-		<epsilon.emf.loadModel name="M" modelfile="${model}"
+		<epsilon.emf.loadModel name="M" modelfile="${modelPath}"
 					metamodeluri="http://www.eclipse.org/emf/2002/Ecore" read="true" store="false"/>
 		<epsilon.egl src="egl/Emf2Html.egl" outputroot="${outputRoot}">
 			<model ref="M"/>
